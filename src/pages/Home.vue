@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Home组件的内容</h2>
+    <h4>Home组件的内容</h4>
   </div>
 </template>
 

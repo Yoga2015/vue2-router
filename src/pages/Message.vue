@@ -8,7 +8,7 @@
         <!-- <router-link :to='`/about/message/detail?id=${m.id}&title=${m.title}`'>
           {{ m.title }}
         </router-link> -->
-        
+
         <!-- 跳转路由并携带 query参数 , to 的 对象写法 -->
         <router-link :to="{
           path: '/about/message/detail',

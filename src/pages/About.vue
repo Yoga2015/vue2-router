@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>About组件的内容</h2>
+    <h4>About组件的内容</h4>
     <!-- router-link 子级路由链接   -->
     <router-link active-class="active" to="/about">News</router-link> &nbsp; &nbsp;
     <router-link active-class="active" to="/about/message">Message</router-link>

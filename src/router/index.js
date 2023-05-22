@@ -25,13 +25,29 @@ export default new VueRouter({
       redirect: '/about/news',
       // 1、通过 children 属性，嵌套 声明 子级路由规则 ，/news 、/message 都可以不加斜线
       children: [
-        { path: 'news', component: News },   // 访问 /about/news 时，展示 News组件
+        // 访问 /about/news 时，展示 News组件
+        {
+          path: 'news',
+          component: News,
+          children: [
+            {
+              name: 'xinwen',    // 路由命名，当 路由地址 太长时，才会使用命名路由
+              path: 'detail/:id/:title',
+              component: Detail,
+              props: true
+            }
+          ]
+        },
+
+        // 访问 /about/message 时，展示 Message组件
         {
           path: 'message',
           component: Message,
-          // redirect: '/about/message/detail',
           children: [
-            { path: 'detail', component: Detail }
+            {
+              path: 'detail',
+              component: Detail
+            }
           ]
         }
       ]

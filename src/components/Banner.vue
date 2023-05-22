@@ -6,6 +6,9 @@
 
 <script>
 export default {
-  name: 'myBanner'
+  name: 'myBanner',
+  mounted() {
+    console.log(this.$route);
+  }
 }
 </script>
