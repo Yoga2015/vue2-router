@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- router-link 第三级 子路由链接 -->
     <ul>
       <li v-for="n in newsList" :key="n.id">
 
@@ -9,7 +10,7 @@
         </router-link> -->
 
         <!-- 跳转路由 并 携带 query 参数 , to 的 对象写法 -->
-        <!-- <router-link :to="{
+        <router-link :to="{
           path: '/about/news/detail',
           query: {
             id: n.id,
@@ -17,12 +18,12 @@
           }
         }">
           {{ n.title }}
-        </router-link> -->
+        </router-link>
 
         <!-- 跳转路由 并 携带 params 参数 , to 的 字符串写法 -->
-        <router-link :to='`/about/news/detail/${n.id}/${n.title}`'>
+        <!-- <router-link :to='`/about/news/detail/${n.id}/${n.title}`'>
           {{ n.title }}
-        </router-link>
+        </router-link> -->
 
         <!-- 跳转路由 并 携带 params 参数 , to 的 对象写法 -->
         <!-- <router-link :to="{
@@ -37,6 +38,7 @@
 
       </li>
     </ul>
+    <!-- router-view 子路由占位符 -->
     <router-view></router-view>
   </div>
 </template>

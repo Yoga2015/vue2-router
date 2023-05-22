@@ -23,33 +23,49 @@ export default new VueRouter({
       path: '/about',
       component: About,
       redirect: '/about/news',
-      // 1、通过 children 属性，嵌套 声明 子级路由规则 ，/news 、/message 都可以不加斜线
+      // 通过 children 属性，嵌套 声明 子级路由规则 ，/news 、/message 都可以不加斜线
       children: [
-        // 访问 /about/news 时，展示 News组件
+        // 第二级 子级路由链接
+
+        // 访问 /about/news 时，展示 News组件    query参数
         {
           path: 'news',
           component: News,
           children: [
+            // 第三级 子级路由链接
             {
-              name: 'xinwen',    // 路由命名，当 路由地址 太长时，才会使用命名路由
-              path: 'detail/:id/:title',
+              path: 'detail',
               component: Detail,
-              props: true
             }
           ]
         },
 
-        // 访问 /about/message 时，展示 Message组件
+        // 访问 /about/message 时，展示 Message组件   params参数
         {
           path: 'message',
           component: Message,
           children: [
+            // 第三级 子级路由链接
             {
-              path: 'detail',
-              component: Detail
+              name: 'xiaoxi',    // 路由命名，当 路由地址 太长时，才会使用命名路由，搭配 params 参数
+              path: 'detail/:id/:title',
+              component: Detail,
+
+              // props的第一种写法：值 为对象，该对象中所有的key-value的组合，最终都会通过props传给 Detail组件
+              // props: { a: '333', b: '666' },
+
+              // props的第二种写法：值 为布尔值,布尔值为真,就会把 该路由组件收到的所有params参数，以props的形式传给 Detail组件
+              // 就好像意味着 接收到的 id、title 都会 以 props 的形式 传给 Detail组件
+              props: true,
+
+              // props的第三种写法：值 为函数 ,该函数返回的对象中每一组key-value都会通过props传给Detail组件  （一般不用）
+              // props() {
+              //   return { id: '666', title: '你好呀' }
+              // }
             }
           ]
         }
+
       ]
     },
   ]
