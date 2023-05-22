@@ -12,10 +12,10 @@
           <!-- <a class="list-group-item" href="./home.html">Home</a> -->
 
           <!-- Vue中借助 router-link标签 实现 路由的切换 ，active-class 可配置高亮样式-->
-          <router-link class="list-group-item" active-class="active" to="/home">
+          <router-link replace class="list-group-item" active-class="active" to="/home">
             Home
           </router-link>
-          <router-link class="list-group-item" active-class="active" to="/about">
+          <router-link replace class="list-group-item" active-class="active" to="/about">
             About
           </router-link>
 
