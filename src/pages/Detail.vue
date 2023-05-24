@@ -20,9 +20,9 @@ export default {
   name: 'MyDetail',
   // props: ['a', 'b'],
   props: ['id', 'title'],
-  mounted() {
-    console.log(this.$route);
-  }
+  // mounted() {
+  //   // console.log(this.$route);
+  // }
 }
 </script>
 

@@ -10,9 +10,9 @@
 <script>
 export default {
   name: 'myBanner',
-  mounted() {
-    console.log(this.$route);
-  },
+  // mounted() {
+  //   // console.log(this.$route);
+  // },
   methods: {
     backShow() {
       // console.log(this.$router);

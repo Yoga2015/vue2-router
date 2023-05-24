@@ -8,7 +8,7 @@
 export default {
   name: 'myHome',
   mounted() {
-    console.log('Home 组件 挂载完毕了', this);
+    // console.log('Home 组件 挂载完毕了', this);
     window.homeRoute = this.$route;
     window.homeRouter = this.$router;
   },
