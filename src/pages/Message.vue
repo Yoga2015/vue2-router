@@ -26,7 +26,7 @@
         </router-link> -->
 
         <!-- 跳转路由 并 携带 params 参数， to 的 对象写法 -->
-        <router-link replace :to="{
+        <router-link :to="{
           name: 'xiaoxi',  // 需要使用命名路由，来搭配 params 参数
           params: {
             id: m.id,
@@ -34,6 +34,7 @@
           }
         }">
           {{ m.title }}
+          <input type="text">
         </router-link>
 
         <!-- 不借助<router-link>的路由跳转（路由导航） 就是 编程式路由导航 -->
@@ -83,3 +84,8 @@ export default {
 }
 </script>
 
+<style scoped>
+li {
+  list-style-type: none;
+}
+</style>

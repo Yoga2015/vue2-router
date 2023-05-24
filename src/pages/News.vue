@@ -18,6 +18,7 @@
           }
         }">
           {{ n.title }}
+          <input type="text">
         </router-link>
 
         <!-- 跳转路由 并 携带 params 参数 , to 的 字符串写法 -->
@@ -54,6 +55,18 @@ export default {
         { id: '003', title: '新闻003' },
       ]
     }
+  },
+  beforeDestroy() {
+    console.log('News组件 即将被销毁了');
+  },
+  // 当 组件 被 <keep-alive>标签 包裹的时候，才可以使用 activated、deactivated 生命周期函数
+  // News组件被激活了
+  activated() {
+    console.log('News组件被激活了,activated');
+  },
+  // News组件被缓存了
+  deactivated() {
+    console.log('News组件被缓存了,deactivated');
   }
 }
 </script>
