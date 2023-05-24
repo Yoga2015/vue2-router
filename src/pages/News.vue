@@ -10,7 +10,7 @@
         </router-link> -->
 
         <!-- 跳转路由 并 携带 query 参数 , to 的 对象写法 -->
-        <router-link :to="{
+        <router-link replace :to="{
           path: '/about/news/detail',
           query: {
             id: n.id,
