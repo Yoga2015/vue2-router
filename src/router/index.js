@@ -8,18 +8,28 @@ import News from '../pages/News.vue'
 import Message from '../pages/Message.vue'
 import Detail from '../pages/Detail.vue'
 
-// 创建 router 实例对象，去管理一组一组的路由规则
-export default new VueRouter({
+// 创建 一个路由器，即：创建 一个 router 实例对象，然后去管理一组一组的路由规则
+const router = new VueRouter({
   routes: [
     // 路由规则 :{ 路由地址，路由对应的组件}
 
     // 重定向路由规则
     // 当用户访问 / 的时候，通过 redirect 属性 跳转到 /Home 对应的路由规则 
-    { path: '/', redirect: '/home' },
-    { path: '/home', component: Home },
+    {
+      name: 'genmulu',
+      path: '/',
+      redirect: '/home'
+    },
+
+    {
+      name: 'shouye',
+      path: '/home',
+      component: Home
+    },
 
     // 嵌套路由
     {
+      name: 'guanyu',
       path: '/about',
       component: About,
       redirect: '/about/news',
@@ -29,6 +39,7 @@ export default new VueRouter({
 
         // 访问 /about/news 时，展示 News组件    query参数
         {
+          name: 'xinwen',
           path: 'news',
           component: News,
           children: [
@@ -42,6 +53,7 @@ export default new VueRouter({
 
         // 访问 /about/message 时，展示 Message组件   params参数
         {
+          name: 'xinxi',
           path: 'message',
           component: Message,
           children: [
@@ -70,3 +82,35 @@ export default new VueRouter({
     },
   ]
 })
+
+// 为 router 实例对象，声明 全局前置路由守卫
+// 只要发生了路由的跳转 , 必然会触发 beforeEach 指定的 function 回调函数
+// function 回调函数 可以写成 箭头函数  ，它其实也叫  守卫方法
+// 全局前置路由守卫 --- 初始化的时候 被调用 、每次路由切换之前 被调用
+router.beforeEach((to, from, next) => {
+  // 这个回调函数 ，是指定 一个路由每次切换时，所调用的函数
+  console.log('@');  // 证明了是 初始化的时候 被调用 ; 每次路由切换之前 也被调用
+  console.log(to);  // to 是 将要访问的 路由路径 的信息对象
+  console.log(from);  // from 是将要离开的 路由路径 的信息对象
+  // 此时这个路由守卫把所有的东西都拦着了，所以你访问 哪个路径都没有内容显示,除非使用 next()
+  // next()  // next 是一个函数 ，调用 next() 表示放行，允许这次 路由跳转（路由导航）
+
+  // if (localStorage.getItem('school') === 'qinghuaa') {
+  //   next()
+  // }
+
+  // if (to.path === '/about/news' || to.path === '/about/message') {
+  if (to.name === 'xinwen' || to.name === 'xinxi') {
+    if (localStorage.getItem('school') === 'qinghuaq') {
+      next()
+    } else {
+      alert('学校名不对，无权限访问')
+    }
+  } else {
+    next()
+  }
+})
+
+
+// 暴露一个路由器
+export default router
